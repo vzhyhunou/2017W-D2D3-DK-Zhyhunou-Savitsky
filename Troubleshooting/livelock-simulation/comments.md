@@ -77,3 +77,18 @@ references and its memory consumption.
 
 For resolving resulted livelock situation I can recommend setting random time on wait statement to allow threads finish 
 their work until while thread waits.
+
+Run the jar file this way:
+```
+java -Xmx2m -XX:+HeapDumpOnOutOfMemoryError -jar livelock-simulation-1.0-SNAPSHOT.jar
+```
+Later in the process of working app, you will see the following message:
+```
+Exception: java.lang.OutOfMemoryError thrown from the UncaughtExceptionHandler in thread "thread-1"
+```
+Which means we ran out of available 2 MB heap size.
+ 
+Also for the more advanced and nice view of Heap dump we can pass the dump file to Eclipse Memory Analyzer. We ca see there
+top memory consuming objects and there referees and referrers. So that we localize a memory leak and fix it. Example of report
+is eclipse-memory-analyzer.png. There is FileStorage object which consumes more then half of available heap memory for storing
+log messages.
