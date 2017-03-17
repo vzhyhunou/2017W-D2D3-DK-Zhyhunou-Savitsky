@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+        targetNamespace="http://www.jmp17.org/userService/1.0"
+        xmlns:tns="http://www.jmp17.org/userService/1.0"
+        elementFormDefault="qualified">
+
+    <element name="UserServiceRequest"
+             type="tns:UserServiceRequestType">
+    </element>
+
+    <complexType name="UserServiceRequestType">
+        <sequence>
+            <element name="userName" type="string"></element>
+        </sequence>
+    </complexType>
+
+    <complexType name="UserServiceResponseType">
+        <sequence>
+            <element name="user" type="tns:UserType" maxOccurs="1" minOccurs="0"></element>
+        </sequence>
+    </complexType>
+
+    <element name="UserServiceResponse"
+             type="tns:UserServiceResponseType">
+    </element>
+
+    <complexType name="UserType">
+        <sequence>
+            <element name="name" type="string" maxOccurs="1" minOccurs="1"></element>
+            <element name="email" type="string" maxOccurs="1" minOccurs="1"></element>
+        </sequence>
+    </complexType>
+</schema>

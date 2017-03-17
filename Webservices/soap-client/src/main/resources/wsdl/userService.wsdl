@@ -37,7 +37,7 @@
     </wsdl:binding>
     <wsdl:service name="UserService">
         <wsdl:port name="UserServicePort" binding="tns:UserServiceBinding">
-            <soap:address location="/userService" />
+            <soap:address location="http://localhost:9000/userService" />
         </wsdl:port>
     </wsdl:service>
 </wsdl:definitions>

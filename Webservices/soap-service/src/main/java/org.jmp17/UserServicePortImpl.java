@@ -9,6 +9,7 @@ import javax.jws.WebService;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by antonsavitsky on 3/17/17.
@@ -31,9 +32,10 @@ public class UserServicePortImpl implements UserServicePortType {
     public UserServiceResponseType getUser(UserServiceRequestType userServiceRequest) {
         String userName = userServiceRequest.getUserName();
         UserServiceResponseType response = new UserServiceResponseType();
-        response.setUser( users.stream()
+        Optional<UserType> user = users.stream()
                 .filter(u -> u.getName().equals(userName))
-                .findFirst().get() );
+                .findFirst();
+        response.setUser( user.isPresent() ? user.get() : null);
         return response;
     }
 }
