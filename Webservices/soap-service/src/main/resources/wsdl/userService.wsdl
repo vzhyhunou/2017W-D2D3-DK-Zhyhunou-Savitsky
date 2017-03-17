@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="userService"
+                  targetNamespace="http://www.jmp17.org/userService/1.0" xmlns:tns="http://www.jmp17.org/userService/1.0"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://www.jmp17.org/userService/1.0">
+            <xsd:import schemaLocation="../schema/userService.xsd"
+                        namespace="http://www.jmp17.org/userService/1.0" />
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="UserServiceRequest">
+        <wsdl:part name="UserServiceRequest" element="tns:UserServiceRequest" />
+    </wsdl:message>
+    <wsdl:message name="UserServiceResponse">
+        <wsdl:part name="UserServiceResponse" element="tns:UserServiceResponse" />
+    </wsdl:message>
+    <wsdl:portType name="UserServicePortType">
+        <wsdl:operation name="getUser">
+            <wsdl:input name="UserServiceRequest" message="tns:UserServiceRequest" />
+            <wsdl:output name="UserServiceResponse" message="tns:UserServiceResponse" />
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="UserServiceBinding" type="tns:UserServicePortType">
+        <soap:binding style="document"
+                      transport="http://schemas.xmlsoap.org/soap/http" />
+        <wsdl:operation name="getUser">
+            <soap:operation style="document"
+                            soapAction="http://www.jmp17.org/userService" />
+            <wsdl:input name="UserServiceRequest">
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output name="UserServiceResponse">
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="UserService">
+        <wsdl:port name="UserServicePort" binding="tns:UserServiceBinding">
+            <soap:address location="/userService" />
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
