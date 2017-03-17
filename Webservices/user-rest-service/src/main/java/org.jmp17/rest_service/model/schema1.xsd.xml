@@ -1,0 +1,9 @@
+<user>
+  <!--Optional:-->
+  <email>string</email>
+  <id>10</id>
+  <!--Optional:-->
+  <login>string</login>
+  <!--Optional:-->
+  <name>string</name>
+</user>
