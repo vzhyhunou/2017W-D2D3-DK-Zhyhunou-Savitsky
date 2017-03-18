@@ -15,10 +15,10 @@ import java.util.Optional;
  * Created by antonsavitsky on 3/17/17.
  */
 @WebService(endpointInterface="org.jmp17.service.UserServicePortType")
-public class UserServicePortImpl implements UserServicePortType {
+public class UserServicePortTypeImpl implements UserServicePortType {
     private List<UserType> users;
 
-    public UserServicePortImpl(){
+    public UserServicePortTypeImpl(){
         UserType user1 = new UserType();
         user1.setName("Anton");
         user1.setEmail("antony.sawicki@gmail.com");

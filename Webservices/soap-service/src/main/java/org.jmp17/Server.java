@@ -7,7 +7,7 @@ public class Server {
     private static final String serverUrl = "http://localhost:9000/userService";
 
     protected Server() throws Exception {
-        UserServicePortImpl implementor = new UserServicePortImpl();
+        UserServicePortTypeImpl implementor = new UserServicePortTypeImpl();
         Endpoint.publish(serverUrl, implementor);
         System.out.println("Server started on " + serverUrl);
     }
