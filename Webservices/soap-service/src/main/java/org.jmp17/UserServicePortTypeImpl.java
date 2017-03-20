@@ -5,6 +5,7 @@ import org.jmp17.service.UserServiceRequestType;
 import org.jmp17.service.UserServiceResponseType;
 import org.jmp17.service.UserType;
 
+import javax.jws.HandlerChain;
 import javax.jws.WebService;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,6 +16,7 @@ import java.util.Optional;
  * Created by antonsavitsky on 3/17/17.
  */
 @WebService(endpointInterface="org.jmp17.service.UserServicePortType")
+@HandlerChain(file = "handler-chains.xml")
 public class UserServicePortTypeImpl implements UserServicePortType {
     private List<UserType> users;
 
@@ -35,7 +37,9 @@ public class UserServicePortTypeImpl implements UserServicePortType {
         Optional<UserType> user = users.stream()
                 .filter(u -> u.getName().equals(userName))
                 .findFirst();
-        response.setUser( user.isPresent() ? user.get() : null);
+        UserType userInstance = user.isPresent() ? user.get() : null;
+        response.setUser( userInstance );
+        System.out.println( userInstance.getName() + " " + userInstance.getEmail() );
         return response;
     }
 }

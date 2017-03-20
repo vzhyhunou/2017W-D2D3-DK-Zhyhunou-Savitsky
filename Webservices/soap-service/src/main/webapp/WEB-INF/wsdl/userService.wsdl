@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <wsdl:definitions name="userService"
-                  targetNamespace="http://www.jmp17.org/userService/1.0" xmlns:tns="http://www.jmp17.org/userService/1.0"
-                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  targetNamespace="http://www.jmp17.org/userService/1.0"
+                  xmlns:tns="http://www.jmp17.org/userService/1.0"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
     <wsdl:types>
         <xsd:schema targetNamespace="http://www.jmp17.org/userService/1.0">
