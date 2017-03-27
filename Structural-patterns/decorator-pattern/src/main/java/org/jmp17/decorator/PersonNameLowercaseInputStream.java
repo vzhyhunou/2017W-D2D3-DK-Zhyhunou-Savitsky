@@ -1,7 +1,6 @@
 package org.jmp17.decorator;
 
 import java.io.IOException;
-import java.io.InputStream;
 
 /**
  * Created by antonsavitsky on 3/12/17.

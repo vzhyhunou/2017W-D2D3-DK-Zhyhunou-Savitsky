@@ -1,8 +1,5 @@
 package org.jmp17.dao.api;
 
-import org.jmp17.model.LangCourse;
-
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -13,4 +10,5 @@ public interface BaseDao<E> {
     Map<Integer, E> retrieveAll();
     void remove(Integer id);
     E retrieve(Integer id);
+    void update(E e);
 }

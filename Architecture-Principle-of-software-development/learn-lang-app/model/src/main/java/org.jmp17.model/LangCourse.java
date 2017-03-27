@@ -8,6 +8,9 @@ import java.util.List;
 public class LangCourse extends Course{
     private String language;
 
+    public LangCourse() {
+    }
+
     public LangCourse(String name, List<Topic> topics, String language) {
         super(name, topics);
         this.language = language;

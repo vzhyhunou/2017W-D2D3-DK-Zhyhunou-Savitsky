@@ -8,28 +8,28 @@ import java.util.Map;
 /**
  * Created by antonsavitsky on 2/11/17.
  */
-public abstract class BaseMapDaoImpl<I extends BaseModelObj>  implements BaseDao<I> {
-    private Map<Integer, I> data;
+public abstract class BaseMapDaoImpl<E extends BaseModelObj>  implements BaseDao<E> {
+    private Map<Integer, E> data;
     protected abstract Integer getIndex();
 
-    public Map<Integer, I> getData() {
+    public Map<Integer, E> getData() {
         return data;
     }
 
-    public void setData(Map<Integer, I> data) {
+    public void setData(Map<Integer, E> data) {
         this.data = data;
     }
 
     @Override
-    public Integer add(I i) {
+    public Integer add(E e) {
         int index = getIndex();
-        i.setId(index);
-        data.put(index, i);
+        e.setId(index);
+        data.put(index, e);
         return index;
     }
 
     @Override
-    public Map<Integer, I> retrieveAll() {
+    public Map<Integer, E> retrieveAll() {
         return data;
     }
 
@@ -39,7 +39,12 @@ public abstract class BaseMapDaoImpl<I extends BaseModelObj>  implements BaseDao
     }
 
     @Override
-    public I retrieve(Integer id) {
+    public E retrieve(Integer id) {
         return data.get(id);
+    }
+
+    @Override
+    public void update(E e) {
+        data.put(e.getId(), e);
     }
 }

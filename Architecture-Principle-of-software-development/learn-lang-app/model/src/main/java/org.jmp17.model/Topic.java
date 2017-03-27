@@ -11,6 +11,13 @@ public class Topic {
     private String description;
     private List<Test> tests;
 
+    public Topic(Integer id, String name, String description, List<Test> tests) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.tests = tests;
+    }
+
     public Topic(String name, String description, List<Test> tests) {
         this.name = name;
         this.description = description;

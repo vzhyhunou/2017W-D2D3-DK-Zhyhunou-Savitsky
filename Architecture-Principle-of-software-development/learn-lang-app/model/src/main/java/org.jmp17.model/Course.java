@@ -9,6 +9,9 @@ public class Course extends BaseModelObj{
     private String name;
     private List<Topic> topics;
 
+    public Course() {
+    }
+
     public Course(String name, List<Topic> topics) {
         this.name = name;
         this.topics = topics;
