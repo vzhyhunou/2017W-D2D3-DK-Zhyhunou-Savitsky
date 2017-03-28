@@ -2,9 +2,14 @@ package org.jmp17.springcore.service;
 
 import org.jmp17.dao.api.LangCourseDao;
 import org.jmp17.model.LangCourse;
+import org.jmp17.springcore.AttachmentsResourceFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -12,12 +17,12 @@ import java.util.List;
  */
 @Service
 public class LangCourseServiceImpl implements LangCourseService {
-    private final LangCourseDao langCourseDao;
 
     @Autowired
-    public LangCourseServiceImpl(LangCourseDao langCourseDao) {
-        this.langCourseDao = langCourseDao;
-    }
+    private LangCourseDao langCourseDao;
+
+    @Autowired
+    private AttachmentsResourceFactory attachmentsResourceFactory;
 
     @Override
     public LangCourse getCourseById(Integer id) {
@@ -46,6 +51,7 @@ public class LangCourseServiceImpl implements LangCourseService {
 
     @Override
     public Integer addCourse(LangCourse course) {
+        ByteArrayResource byteArrayResource = attachmentsResourceFactory.getResource();
         return langCourseDao.add(course);
     }
 }

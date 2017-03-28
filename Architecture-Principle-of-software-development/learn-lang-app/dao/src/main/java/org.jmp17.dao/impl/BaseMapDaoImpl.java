@@ -3,6 +3,7 @@ package org.jmp17.dao.impl;
 import org.jmp17.dao.api.BaseDao;
 import org.jmp17.model.BaseModelObj;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -11,6 +12,14 @@ import java.util.Map;
 public abstract class BaseMapDaoImpl<E extends BaseModelObj>  implements BaseDao<E> {
     private Map<Integer, E> data;
     protected abstract Integer getIndex();
+
+    public BaseMapDaoImpl() {
+        data = new HashMap<Integer, E>();
+    }
+
+    public BaseMapDaoImpl(Map<Integer, E> data) {
+        this.data = data;
+    }
 
     public Map<Integer, E> getData() {
         return data;
