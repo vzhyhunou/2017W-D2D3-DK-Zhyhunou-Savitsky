@@ -29,12 +29,20 @@
         <property name="prettyPrint" value="true" />
     </bean>
 
-    <bean id="langCourseService" class="org.jmp17.springcore.service.LangCourseServiceImpl">
-        <!--<aop:scoped-proxy proxy-target-class="false"/>-->
+    <bean id="sessionScopeDataHolder" class="org.jmp17.springcore.session.SessionScopeDataHolder"/>
+
+    <bean id="sessionScopeData" class="org.jmp17.springcore.session.SessionScopeData" scope="session">
+        <constructor-arg>
+            <bean class="java.util.Date"/>
+        </constructor-arg>
     </bean>
+
+    <bean id="langCourseService" class="org.jmp17.springcore.service.LangCourseServiceImpl"/>
 
     <bean id="langCourseDao" class="org.jmp17.dao.impl.LangCourseBaseMapDaoImpl"/>
 
     <bean id="attachmentsResourceFactory" class="org.jmp17.springcore.AttachmentsResourceFactory"/>
+
     <bean id="rawdataContextHolder" class="org.jmp17.springcore.RawdataContextHolder" scope="request"/>
+
 </beans>
