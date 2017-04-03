@@ -11,6 +11,16 @@ public class LangCourse extends Course{
     public LangCourse() {
     }
 
+    public LangCourse(Integer id, String name, String language) {
+        super(id, name);
+        this.language = language;
+    }
+
+    public LangCourse(String name, String language) {
+        super(name);
+        this.language = language;
+    }
+
     public LangCourse(String name, List<Topic> topics, String language) {
         super(name, topics);
         this.language = language;

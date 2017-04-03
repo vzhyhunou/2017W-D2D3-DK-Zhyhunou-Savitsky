@@ -12,6 +12,15 @@ public class Course extends BaseModelObj{
     public Course() {
     }
 
+    public Course(Integer id, String name) {
+        super(id);
+        this.name = name;
+    }
+
+    public Course(String name) {
+        this.name = name;
+    }
+
     public Course(String name, List<Topic> topics) {
         this.name = name;
         this.topics = topics;
