@@ -3,7 +3,9 @@ package org.jmp17.dao.impl;
 import org.jmp17.dao.api.BaseDao;
 import org.jmp17.model.BaseModelObj;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -38,8 +40,8 @@ public abstract class BaseMapDaoImpl<E extends BaseModelObj>  implements BaseDao
     }
 
     @Override
-    public Map<Integer, E> retrieveAll() {
-        return data;
+    public List<E> retrieveAll() {
+        return new ArrayList<E>( data.values() );
     }
 
     @Override

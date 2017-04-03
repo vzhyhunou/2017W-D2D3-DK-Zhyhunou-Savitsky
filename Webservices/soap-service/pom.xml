@@ -6,7 +6,7 @@
 
     <groupId>org.jmp17</groupId>
     <artifactId>soap-service</artifactId>
-    <packaging>war</packaging>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>

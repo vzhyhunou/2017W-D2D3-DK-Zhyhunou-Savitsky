@@ -1,6 +1,5 @@
 package org.jmp17.dao.test;
 
-import org.jmp17.dao.impl.BaseMapDaoImpl;
 import org.jmp17.dao.impl.LangCourseBaseMapDaoImpl;
 import org.jmp17.dao.test.config.LangCourseMapDaoImplTestConfig;
 import org.jmp17.model.LangCourse;
@@ -15,7 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Map;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -51,7 +50,7 @@ public class LangCourseMapDaoImplTest {
 
     @Test
     public void testRetrieveAll(){
-        Map<Integer, LangCourse> allCourses = langCourseMapDaoImpl.retrieveAll();
+        List<LangCourse> allCourses = langCourseMapDaoImpl.retrieveAll();
         assertEquals(initialListSize, allCourses.size());
     }
 
