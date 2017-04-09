@@ -22,7 +22,7 @@ public class LangCourseMapDaoImplTestConfig {
         Map<Integer, LangCourse> courseData = new HashMap<>();
         courseData.put(1, new LangCourse(1, "Business language",
                 Arrays.asList(new Topic("Basic glossary", "This is to make you familiar with basic terms", new ArrayList<Test>())),
-                "English"));
+                "English", 100.1));
 
         LangCourseBaseMapDaoImpl langCourseMapDaoImpl = new LangCourseBaseMapDaoImpl();
         langCourseMapDaoImpl.setData(courseData);

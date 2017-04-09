@@ -7,6 +7,7 @@ import java.util.List;
  */
 public class LangCourse extends Course{
     private String language;
+    private double price;
 
     public LangCourse() {
     }
@@ -14,6 +15,12 @@ public class LangCourse extends Course{
     public LangCourse(Integer id, String name, String language) {
         super(id, name);
         this.language = language;
+    }
+
+    public LangCourse(Integer id, String name, String language, double price) {
+        super(id, name);
+        this.language = language;
+        this.price = price;
     }
 
     public LangCourse(String name, String language) {
@@ -26,9 +33,21 @@ public class LangCourse extends Course{
         this.language = language;
     }
 
+    public LangCourse(String name, List<Topic> topics, String language, double price) {
+        super(name, topics);
+        this.language = language;
+        this.price = price;
+    }
+
     public LangCourse(Integer id,String name, List<Topic> topics, String language) {
         super(id, name, topics);
         this.language = language;
+    }
+
+    public LangCourse(Integer id,String name, List<Topic> topics, String language, double price) {
+        super(id, name, topics);
+        this.language = language;
+        this.price = price;
     }
 
     public String getLanguage() {
@@ -39,11 +58,20 @@ public class LangCourse extends Course{
         this.language = language;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     @Override
     public String toString() {
         return "LangCourse {" +
                 super.toString() +
                 ", language='" + language + '\'' +
+                ", price=" + price + '\'' +
                 '}';
     }
 }

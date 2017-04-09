@@ -23,14 +23,16 @@ public class BaseJdbcDaoImplTest {
 
     private static final LangCourse UPDATED_LANGCOURSE = new LangCourse(1, "English A1 - Speaking", "English");
     private static final LangCourse ADDED_LANGCOURSE = new LangCourse("English A2 - Business", "English");
+    private static final int ALL_NUM = 2;
 
     @Autowired
     private LangCourseDao langCourseDao;
 
     @Test
     public void retrieveAllTest(){
-        List all = langCourseDao.retrieveAll();
-        System.out.println( all.get(0) );
+        List<LangCourse> all = langCourseDao.retrieveAll();
+        assertEquals( all.size(), ALL_NUM);
+        all.forEach(System.out::println);
     }
 
     @Test
@@ -50,7 +52,11 @@ public class BaseJdbcDaoImplTest {
     public void addTest(){
         langCourseDao.add( ADDED_LANGCOURSE );
         LangCourse newlyAdded = langCourseDao.retrieve(3);
-        assertEquals( newlyAdded.getName(), ADDED_LANGCOURSE.getName() );
+        assertEquals( ADDED_LANGCOURSE.getName(), newlyAdded.getName() );
     }
-
+    @Test
+    public void getByPriceLimitTest(){
+        int count = langCourseDao.getCountByPriceLimit(125.0);
+        assertEquals( 1, count);
+    }
 }

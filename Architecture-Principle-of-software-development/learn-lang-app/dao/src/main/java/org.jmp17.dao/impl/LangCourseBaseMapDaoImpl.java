@@ -43,4 +43,9 @@ public class LangCourseBaseMapDaoImpl
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public Integer getCountByPriceLimit(Double priceLimit) {
+        return null;
+    }
+
 }

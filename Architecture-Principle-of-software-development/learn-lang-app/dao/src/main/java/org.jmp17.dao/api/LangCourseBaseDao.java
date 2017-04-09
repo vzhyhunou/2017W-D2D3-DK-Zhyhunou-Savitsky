@@ -10,4 +10,5 @@ import java.util.List;
 public interface LangCourseBaseDao {
     LangCourse retrieveByName(String name);
     List<LangCourse> getByLanguage(String lang);
+    Integer getCountByPriceLimit(Double priceLimit);
 }
