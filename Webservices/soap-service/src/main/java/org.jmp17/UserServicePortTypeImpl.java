@@ -31,7 +31,7 @@ public class UserServicePortTypeImpl implements UserServicePortType {
     }
 
     @Override
-    public UserServiceResponseType getUser(UserServiceRequestType userServiceRequest) {
+        public UserServiceResponseType getUser(UserServiceRequestType userServiceRequest) {
         String userName = userServiceRequest.getUserName();
         UserServiceResponseType response = new UserServiceResponseType();
         Optional<UserType> user = users.stream()
