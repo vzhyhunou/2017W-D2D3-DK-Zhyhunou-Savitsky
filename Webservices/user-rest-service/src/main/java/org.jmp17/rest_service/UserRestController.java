@@ -2,6 +2,7 @@ package org.jmp17.rest_service;
 
 import io.swagger.annotations.Api;
 import org.jmp17.rest_service.data.UserRepository;
+import org.jmp17.rest_service.exception.UserNotFoundException;
 import org.jmp17.rest_service.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,6 +21,10 @@ public class UserRestController {
     @Autowired
     private UserRepository userRepository;
 
+    public UserRestController(UserRepository userRepository){
+        this.userRepository = userRepository;
+    }
+
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     public List<User> getAllUsers(){
         return userRepository.findAll();
@@ -37,9 +42,12 @@ public class UserRestController {
         createUser(user);
     }
 
-    @RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
-    public User getUser(@PathVariable long id){
-        return userRepository.findOne(id);
+    @RequestMapping(value = "/users/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public User getUser(@PathVariable long id) throws UserNotFoundException {
+        User user = userRepository.findOne(id);
+        if( user==null )
+            throw new UserNotFoundException();
+        return user;
     }
 
     @RequestMapping(value = "/users/{id}", method = RequestMethod.DELETE)
