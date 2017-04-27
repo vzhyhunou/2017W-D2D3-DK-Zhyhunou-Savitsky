@@ -2,6 +2,7 @@ package org.jmp17.rest_service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +16,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 @ComponentScan
 @EnableSwagger2
-public class DemoApplication {
+public class DemoApplication extends SpringBootServletInitializer {
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}

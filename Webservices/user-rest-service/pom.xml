@@ -6,7 +6,7 @@
 	<groupId>org.jmp17</groupId>
 	<artifactId>user-rest-service</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>${packaging.type}</packaging>
 
 	<name>user-rest-service</name>
 
@@ -61,7 +61,54 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>2.17</version>
+				<executions>
+					<execution>
+						<id>validate</id>
+						<phase>validate</phase>
+						<configuration>
+							<configLocation>checkstyle.xml</configLocation>
+							<encoding>UTF-8</encoding>
+							<consoleOutput>true</consoleOutput>
+							<!--<failsOnError>true</failsOnError>-->
+							<linkXRef>false</linkXRef>
+						</configuration>
+						<goals>
+							<goal>checkstyle</goal>
+							<!--<goal>check</goal>-->
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>jar</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<packaging.type>jar</packaging.type>
+			</properties>
+		</profile>
+		<profile>
+			<id>war</id>
+			<properties>
+				<packaging.type>war</packaging.type>
+			</properties>
+			<dependencies>
+				<dependency>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+					<scope>provided</scope>
+				</dependency>
+			</dependencies>
+		</profile>
+	</profiles>
 
 </project>
