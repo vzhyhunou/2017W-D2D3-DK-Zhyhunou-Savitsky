@@ -1,7 +1,6 @@
 plugins {
     id "org.springframework.boot" version "1.5.3.RELEASE"
     id "com.palantir.jacoco-coverage" version "0.4.0"
-    /*id "info.adavis.qualitychecks" version "0.2.3"*/
 }
 
 jar {
@@ -26,3 +25,13 @@ dependencies {
     compile("io.springfox:springfox-swagger2:2.6.1")
     compile("io.springfox:springfox-swagger-ui:2.6.1")
 }
+
+task emailMe << {
+    if (test.state.failure != null) {
+        println 'SEND E-MAIL ANNOUNCING TEST ERROR!!!'
+    } else {
+        println 'SEND E-MAIL ANNOUNCING TEST SUCCESS'
+    }
+}
+
+test.finalizedBy(emailMe)

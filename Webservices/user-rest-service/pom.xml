@@ -83,6 +83,19 @@
 					</execution>
 				</executions>
 			</plugin>
+			<!--<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					&lt;!&ndash; id-шник из settings.xml &ndash;&gt;
+					<server>tomcat</server>
+					<url>http://localhost:8080/manager</url>
+					<path>/mywebapp</path>
+					<username>tomcat</username>
+					<password>tomcat</password>
+				</configuration>
+			</plugin>-->
 		</plugins>
 	</build>
 
@@ -108,6 +121,22 @@
 					<scope>provided</scope>
 				</dependency>
 			</dependencies>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.tomcat.maven</groupId>
+						<artifactId>tomcat7-maven-plugin</artifactId>
+						<version>2.2</version>
+						<configuration>
+							<!-- id-шник из settings.xml -->
+							<server>tomcat</server>
+							<url>http://localhost:8080/manager/text</url>
+							<username>tomcat</username>
+							<password>tomcat</password>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 	</profiles>
 
