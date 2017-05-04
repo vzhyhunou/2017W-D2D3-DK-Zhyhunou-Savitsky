@@ -9,22 +9,17 @@ ENV TOMCAT_MINOR_VERSION 8.0.11
 ENV CATALINA_HOME /tomcat
 
 # =============INSTALL SUPPLEMENT PACKAGES===============
-
 RUN yum -y update; yum clean all
 RUN yum -y install httpd httpd-devel apr apr-devel apr-util apr-util-devel gcc gcc-c++ make autoconf libtool nc netstat wget; yum clean all
 RUN echo "Apache HTTPD" >> /var/www/html/index.html
 RUN echo "Include /mod_jk.conf" >> /etc/httpd/conf/httpd.conf
-# ==========================================================
-
-# INSTALL JAVA
+#======================INSTALL JAVA=========================
 RUN wget --no-cookies --no-check-certificate --header \
     "Cookie: oraclelicense=accept-securebackup-cookie" \
     "http://download.oracle.com/otn-pub/java/jdk/$JAVA_VERSION-$BUILD_VERSION/jdk-$JAVA_VERSION-linux-x64.rpm" \
     -O /tmp/jdk-8-linux-x64.rpm
 RUN yum -y install /tmp/jdk-8-linux-x64.rpm
-
-# ==================INSTALL TOMCAT===============
-
+#======================INSTALL TOMCAT=======================
 RUN wget -q https://archive.apache.org/dist/tomcat/tomcat-${TOMCAT_MAJOR_VERSION}/v${TOMCAT_MINOR_VERSION}/bin/apache-tomcat-${TOMCAT_MINOR_VERSION}.tar.gz && \
     wget -qO- https://archive.apache.org/dist/tomcat/tomcat-${TOMCAT_MAJOR_VERSION}/v${TOMCAT_MINOR_VERSION}/bin/apache-tomcat-${TOMCAT_MINOR_VERSION}.tar.gz.md5 | md5sum -c - && \
     tar zxf apache-tomcat-*.tar.gz && \
@@ -40,9 +35,6 @@ RUN tar -xvzf tomcat-connectors-1.2.42-src.tar.gz && \
     make && \
     libtool --finish /usr/lib64/httpd/modules && \
     make install
-
-#================================================
-
 #==================INSTALL SSH==================
 RUN yum -y install openssh-server
 RUN chkconfig sshd on
