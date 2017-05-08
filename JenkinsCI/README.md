@@ -20,3 +20,4 @@ After that you can run 'pipeline' job which will checkout petclinic project from
 
 1. Move Maven and JDK installation to scripts.
 2. Make job that will automatically create jobs for branches on push to git.
+3. Docker: mount volume to save state of Jenkins between restarts.
