@@ -1,6 +1,5 @@
 UPDATE: jenkins can now be accessed online http://81.4.123.21:8085/job/pipeline/
 
-
 In order to run this example you'll need to checkout this project
 https://github.com/AntonSavitsky/spring-petclinic.git
 
