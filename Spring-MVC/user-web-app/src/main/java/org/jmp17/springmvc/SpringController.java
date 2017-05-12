@@ -31,9 +31,10 @@ public class SpringController {
     }
 
     @RequestMapping(value = "/table", method = RequestMethod.GET)
-    public String userList(@ModelAttribute("model") ModelMap model) {
-        model.addAttribute("userList", new ArrayList<User>(userMap.values()) );
-        return "table";
+    public ModelAndView userList() {
+        ModelAndView modelAndView = new ModelAndView( "table", "userList", new ArrayList<User>(userMap.values()) );
+        modelAndView.addObject( "tableListTabActive", true );
+        return modelAndView;
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
@@ -53,7 +54,9 @@ public class SpringController {
 
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
     public ModelAndView user(@PathVariable int id){
-        return new ModelAndView( "user", "user", userMap.get( id ) );
+        ModelAndView modelAndView = new ModelAndView( "user", "user", userMap.get( id ) );
+        modelAndView.addObject( "userTabActive", true );
+        return modelAndView;
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)

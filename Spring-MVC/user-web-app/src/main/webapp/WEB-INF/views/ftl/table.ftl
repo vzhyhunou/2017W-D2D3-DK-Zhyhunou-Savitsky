@@ -35,7 +35,7 @@
 <div class="wrapper">
 
     <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
-    <#include "assets/common/side-bar.html">
+    <#include "assets/common/side-bar.ftl">
 
     <div class="main-panel">
         <nav class="navbar navbar-default navbar-fixed">
@@ -128,7 +128,7 @@
                                     	<th>Company</th>
                                     </thead>
                                     <tbody>
-                                        <#list model["userList"] as user>
+                                        <#list userList as user>
                                         <tr>
                                         	<td>${user.id}</td>
                                         	<td>${user.firstName} ${user.lastName}</td>
@@ -174,7 +174,7 @@
             </fieldset>
         </div>
 
-    <#include "../../assets/common/footer.html">
+    <#include "assets/common/footer.ftl">
 
 
     </div>

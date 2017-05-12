@@ -34,7 +34,7 @@
 
 <div class="wrapper">
     <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
-    <#include "assets/common/side-bar.html">
+    <#include "assets/common/side-bar.ftl">
 
     <div class="main-panel">
         <nav class="navbar navbar-default navbar-fixed">
@@ -167,7 +167,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>About Me</label>
-                                                <textarea rows="5" class="form-control" name="aboutMe" placeholder="Here can be your description" value="Mike">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
+                                                <textarea rows="5" class="form-control" name="aboutMe" placeholder="Here can be your description">${user.aboutMe}</textarea>
                                             </div>
                                         </div>
                                     </div>

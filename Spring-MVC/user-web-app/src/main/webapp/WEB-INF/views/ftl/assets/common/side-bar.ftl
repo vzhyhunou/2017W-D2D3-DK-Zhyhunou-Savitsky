@@ -17,13 +17,13 @@
                     <p>Dashboard</p>
                 </a>
             </li>
-            <li>
+            <li class="${(userTabActive!false)?string('active','')}">
                 <a href="/user">
                     <i class="pe-7s-user"></i>
                     <p>User Profile</p>
                 </a>
             </li>
-            <li class="active">
+            <li class="${(tableListTabActive!false)?string('active','')}">
                 <a href="/table">
                     <i class="pe-7s-note2"></i>
                     <p>Table List</p>
