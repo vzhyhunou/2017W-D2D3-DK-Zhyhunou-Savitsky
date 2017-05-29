@@ -5,21 +5,16 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.jmp17</groupId>
-    <artifactId>learn-lang-app</artifactId>
+    <artifactId>learn-lang-jpa</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
-    <modules>
-        <module>model</module>
-        <module>dao</module>
-    </modules>
-
     <properties>
-        <spring.version>4.2.4.RELEASE</spring.version>
-        <junit.version>4.11</junit.version>
+        <spring.version>4.3.7.RELEASE</spring.version>
+        <junit.version>4.12</junit.version>
+        <derby.version>10.11.1.1</derby.version>
     </properties>
 
-    <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>junit</groupId>
@@ -51,8 +46,42 @@
                 <artifactId>hibernate-jpa-2.1-api</artifactId>
                 <version>1.0.0.Final</version>
             </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>5.2.10.Final</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jmp17</groupId>
+                <artifactId>model</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jmp17</groupId>
+                <artifactId>dao</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-tx</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.derby</groupId>
+                <artifactId>derby</artifactId>
+                <version>${derby.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-orm</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-orm</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
         </dependencies>
-    </dependencyManagement>
 
 
     <build>

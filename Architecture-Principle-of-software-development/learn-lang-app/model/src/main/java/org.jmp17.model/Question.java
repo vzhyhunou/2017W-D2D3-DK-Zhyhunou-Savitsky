@@ -1,9 +1,18 @@
 package org.jmp17.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * Created by antonsavitsky on 2/9/17.
  */
+@Entity
+@Table(name = "QUESTION")
 public class Question {
+    @Id
+    @GeneratedValue
     private Integer id;
     private String questionText;
     private String[] answers;

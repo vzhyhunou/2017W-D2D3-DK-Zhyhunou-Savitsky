@@ -1,14 +1,21 @@
 package org.jmp17.model;
 
+import javax.persistence.*;
 import java.util.List;
 
 /**
  * Created by antonsavitsky on 2/9/17.
  */
+@Entity
+@Table(name = "TOPIC")
 public class Topic {
+    @Id
+    @GeneratedValue
     private Integer id;
     private String name;
     private String description;
+
+    @OneToMany
     private List<Test> tests;
 
     public Topic(Integer id, String name, String description, List<Test> tests) {
