@@ -1,17 +1,24 @@
 package org.jmp17.model;
 
+import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
 import java.util.List;
 
 /**
  * Created by antonsavitsky on 2/9/17.
  */
+@MappedSuperclass
 public class Course extends BaseModelObj{
     private String name;
-    @OneToMany
+    @OneToMany(mappedBy = "courseId")
     private List<Topic> topics;
 
     public Course() {
+    }
+
+    public Course( Integer id )
+    {
+        super( id );
     }
 
     public Course(Integer id, String name) {
@@ -53,7 +60,6 @@ public class Course extends BaseModelObj{
     @Override
     public String toString() {
         return  "id=" + getId() +
-                ", name='" + name + '\'' +
-                ", topics=" + topics;
+                ", name='" + name;
     }
 }

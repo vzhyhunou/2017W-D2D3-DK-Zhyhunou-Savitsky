@@ -10,13 +10,15 @@ import java.util.List;
 @Table(name = "TOPIC")
 public class Topic {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String description;
 
-    @OneToMany
+    @OneToMany(mappedBy = "topicId")
     private List<Test> tests;
+
+    private Integer courseId;
 
     public Topic(Integer id, String name, String description, List<Test> tests) {
         this.id = id;
@@ -29,6 +31,13 @@ public class Topic {
         this.name = name;
         this.description = description;
         this.tests = tests;
+    }
+
+    public Topic( String name, String description, Integer courseId )
+    {
+        this.name = name;
+        this.description = description;
+        this.courseId = courseId;
     }
 
     public Integer getId() {

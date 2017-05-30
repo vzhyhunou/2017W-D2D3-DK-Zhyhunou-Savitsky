@@ -10,11 +10,22 @@ import java.util.List;
 @Table(name = "TEST")
 public class Test {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    @OneToMany
+    @OneToMany(mappedBy = "testId")
     private List<Question> questions;
+    private Integer topicId;
+
+    public Integer getTopicId()
+    {
+        return topicId;
+    }
+
+    public void setTopicId( Integer topicId )
+    {
+        this.topicId = topicId;
+    }
 
     public Integer getId() {
         return id;

@@ -1,6 +1,7 @@
 package org.jmp17.model;
 
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
@@ -10,7 +11,7 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public class BaseModelObj {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
 
     public BaseModelObj(Integer id){

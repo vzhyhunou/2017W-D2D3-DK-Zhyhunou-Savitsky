@@ -1,9 +1,6 @@
 package org.jmp17.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by antonsavitsky on 2/9/17.
@@ -12,11 +9,22 @@ import javax.persistence.Table;
 @Table(name = "QUESTION")
 public class Question {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
     private String questionText;
     private String[] answers;
     private String[] rightAnswers;
+    private Integer testId;
+
+    public Integer getTestId()
+    {
+        return testId;
+    }
+
+    public void setTestId( Integer testId )
+    {
+        this.testId = testId;
+    }
 
     public Integer getId() {
         return id;
