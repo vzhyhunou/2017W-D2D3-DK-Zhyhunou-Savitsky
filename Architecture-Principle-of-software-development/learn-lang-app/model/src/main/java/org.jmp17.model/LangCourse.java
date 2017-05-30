@@ -1,10 +1,14 @@
 package org.jmp17.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.List;
 
 /**
  * Created by antonsavitsky on 2/9/17.
  */
+@Entity
+@Table(name = "LANGCOURSE")
 public class LangCourse extends Course{
     private String language;
     private double price;

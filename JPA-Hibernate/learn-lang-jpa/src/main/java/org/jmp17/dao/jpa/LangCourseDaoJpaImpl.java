@@ -17,13 +17,14 @@ public class LangCourseDaoJpaImpl implements LangCourseDao
   @Override
   public Integer add( LangCourse langCourse )
   {
+    entityManager.persist( langCourse );
     return null;
   }
 
   @Override
   public List<LangCourse> retrieveAll()
   {
-    return null;
+    return entityManager.createQuery("SELECT course FROM LangCourse course").getResultList();
   }
 
   @Override

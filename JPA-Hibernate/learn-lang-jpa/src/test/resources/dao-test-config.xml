@@ -11,21 +11,27 @@
 
     <context:component-scan base-package="org.jmp17.dao.jpa"/>
 
-    <jdbc:embedded-database id="learn-lang-jpa" type="DERBY">
-        <!--<jdbc:script location="classpath:db/sql/init.sql" />-->
-        
-    </jdbc:embedded-database>
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="org.apache.derby.jdbc.EmbeddedDriver" />
+        <property name="url" value="jdbc:derby:memory:testdb;create=true" />
+        <!--<property name="url" value="jdbc:derby:/home/asavitsky/testdb" />-->
+        <property name="username" value="sa" />
+        <property name="password" value="" />
+    </bean>
+
+    <jdbc:initialize-database data-source="dataSource">
+        <jdbc:script location="classpath:init-data.sql"/>
+    </jdbc:initialize-database>
 
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <!--<property name="persistenceUnitName" value="testPU" />-->
-        <property name="dataSource" ref="learn-lang-jpa" />
+        <property name="dataSource" ref="dataSource" />
         <property name="packagesToScan" value="org.jmp17.model" />
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
         </property>
         <property name="jpaProperties">
             <props>
-                <prop key="hibernate.hbm2ddl.auto">c</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
                 <prop key="hibernate.dialect">org.hibernate.dialect.DerbyDialect</prop>
             </props>
         </property>

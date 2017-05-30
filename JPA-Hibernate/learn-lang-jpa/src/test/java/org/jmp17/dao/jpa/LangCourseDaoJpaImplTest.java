@@ -21,4 +21,9 @@ public class LangCourseDaoJpaImplTest
   public void addTest(){
     langCourseDao.add( new LangCourse(  ) );
   }
+
+  @Test
+  public void retrieveAlTest(){
+    langCourseDao.retrieveAll();
+  }
 }

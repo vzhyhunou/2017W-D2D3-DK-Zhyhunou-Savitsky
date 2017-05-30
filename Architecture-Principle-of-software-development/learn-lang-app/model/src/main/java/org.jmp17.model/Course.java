@@ -1,5 +1,6 @@
 package org.jmp17.model;
 
+import javax.persistence.OneToMany;
 import java.util.List;
 
 /**
@@ -7,6 +8,7 @@ import java.util.List;
  */
 public class Course extends BaseModelObj{
     private String name;
+    @OneToMany
     private List<Topic> topics;
 
     public Course() {
