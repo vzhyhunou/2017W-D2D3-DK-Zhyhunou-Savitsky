@@ -8,10 +8,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "TOPIC")
-public class Topic {
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Integer id;
+public class Topic extends BaseModelObj{
     private String name;
     private String description;
 
@@ -21,7 +18,7 @@ public class Topic {
     private Integer courseId;
 
     public Topic(Integer id, String name, String description, List<Test> tests) {
-        this.id = id;
+        super(id);
         this.name = name;
         this.description = description;
         this.tests = tests;
@@ -40,12 +37,8 @@ public class Topic {
         this.courseId = courseId;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
+    public Topic()
+    {
     }
 
     public String getName() {

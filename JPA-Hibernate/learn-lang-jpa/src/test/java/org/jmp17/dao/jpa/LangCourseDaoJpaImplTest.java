@@ -41,7 +41,7 @@ public class LangCourseDaoJpaImplTest
 
   @Test
   public void removeTest(){
-    langCourseDao.remove( 1 );
+    langCourseDao.remove( 2 );
     assertEquals( 1, langCourseDao.retrieveAll( ).size() );
   }
 

@@ -1,20 +1,37 @@
 package org.jmp17.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 
 /**
  * Created by antonsavitsky on 2/9/17.
  */
 @Entity
 @Table(name = "QUESTION")
-public class Question {
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Integer id;
+public class Question extends BaseModelObj{
     private String questionText;
-    private String[] answers;
-    private String[] rightAnswers;
+    @Lob
+    private ArrayList<String> answers;
+    @Lob
+    private ArrayList<String> rightAnswers;
     private Integer testId;
+
+    public Question( String questionText, ArrayList<String> answers,
+      ArrayList<String> rightAnswers, Integer testId )
+    {
+        this.questionText = questionText;
+        this.answers = answers;
+        this.rightAnswers = rightAnswers;
+        this.testId = testId;
+    }
+
+    public Question( String questionText, ArrayList<String> answers,
+      ArrayList<String> rightAnswers )
+    {
+        this.questionText = questionText;
+        this.answers = answers;
+        this.rightAnswers = rightAnswers;
+    }
 
     public Integer getTestId()
     {
@@ -26,14 +43,6 @@ public class Question {
         this.testId = testId;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public String getQuestionText() {
         return questionText;
     }
@@ -42,19 +51,23 @@ public class Question {
         this.questionText = questionText;
     }
 
-    public String[] getAnswers() {
+    public ArrayList<String> getAnswers()
+    {
         return answers;
     }
 
-    public void setAnswers(String[] answers) {
+    public void setAnswers( ArrayList<String> answers )
+    {
         this.answers = answers;
     }
 
-    public String[] getRightAnswers() {
+    public ArrayList<String> getRightAnswers()
+    {
         return rightAnswers;
     }
 
-    public void setRightAnswers(String[] rightAnswers) {
+    public void setRightAnswers( ArrayList<String> rightAnswers )
+    {
         this.rightAnswers = rightAnswers;
     }
 }

@@ -4,49 +4,22 @@ import org.jmp17.dao.api.LangCourseDao;
 import org.jmp17.model.LangCourse;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.List;
 
 @Repository
-public class LangCourseDaoJpaImpl implements LangCourseDao
+public class LangCourseDaoJpaImpl extends BaseJpaImpl<LangCourse> implements
+  LangCourseDao
 {
-  @PersistenceContext
-  private EntityManager entityManager;
-
-  @Override
-  public Integer add( LangCourse langCourse )
+  public LangCourseDaoJpaImpl( )
   {
-    entityManager.persist( langCourse );
-    return langCourse.getId();
+    super( LangCourse.class );
   }
 
   @Override
   public List<LangCourse> retrieveAll()
   {
     return entityManager.createQuery("SELECT course FROM LangCourse course").getResultList();
-  }
-
-  @Override
-  public void remove( Integer id )
-  {
-    LangCourse langCourse = retrieve( id );
-    entityManager.remove( langCourse );
-  }
-
-  @Override
-  public LangCourse retrieve( Integer id )
-  {
-    Query query = entityManager.createQuery( "SELECT course FROM LangCourse course WHERE course.id =:id", LangCourse.class );
-    query.setParameter( "id", id );
-    return (LangCourse)query.getSingleResult();
-  }
-
-  @Override
-  public void update( LangCourse langCourse )
-  {
-    entityManager.merge( langCourse );
   }
 
   @Override
