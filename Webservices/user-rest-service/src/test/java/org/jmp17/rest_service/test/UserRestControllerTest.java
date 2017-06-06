@@ -1,6 +1,7 @@
 package org.jmp17.rest_service.test;
 
 import org.jmp17.rest_service.data.UserRepository;
+import org.jmp17.rest_service.exception.UserNotFoundException;
 import org.jmp17.rest_service.model.User;
 import org.jmp17.rest_service.test.config.WebAppContext;
 import org.junit.Before;
@@ -98,7 +99,9 @@ public class UserRestControllerTest{
     }
 
     @Test
-    public void getUser_NotFound404_ThrowsUserNotFound() throws Exception {
+    public void getUser_NotFound404()
+      throws Exception
+    {
         when(userRepository.findOne(anyLong())).thenReturn(null);
 
         mockMvc.perform(get("/users/"+anyLong()))

@@ -1,7 +1,7 @@
 ----------------------------------------------------------------
-Wed May 31 19:34:15 MSK 2017:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance a816c00e-015c-5f5b-905c-00000b887c40 
-on database directory memory:/home/asavitsky/dev/2017W-D2D3-DK-Zhyhunou-Savitsky/JPA-Hibernate/learn-lang-jpa/testdb with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Tue Jun 06 18:43:47 MSK 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance a816c00e-015c-7e13-826a-00000dd88888 
+on database directory memory:/home/asavitsky/dev/2017W-D2D3-DK-Zhyhunou-Savitsky/JPA-Hibernate/learn-lang-jpa/testdb with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
 Loaded from file:/home/asavitsky/.m2/repository/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_91-b14

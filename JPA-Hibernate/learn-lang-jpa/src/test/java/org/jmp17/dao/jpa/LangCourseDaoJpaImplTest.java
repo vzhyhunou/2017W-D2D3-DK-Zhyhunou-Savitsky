@@ -1,6 +1,7 @@
 package org.jmp17.dao.jpa;
 
 import org.jmp17.dao.api.LangCourseDao;
+import org.jmp17.dao.api.NotFoundException;
 import org.jmp17.model.LangCourse;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,14 +36,38 @@ public class LangCourseDaoJpaImplTest
   }
 
   @Test
-  public void retrieveTest(){
+  public void retrieveTest()
+    throws Exception
+  {
     assertEquals( "English A1", langCourseDao.retrieve( 1 ).getName() );
   }
 
+  @Test(expected = NotFoundException.class)
+  public void retrieveTest_NotFound_ThrowsException()
+    throws NotFoundException
+  {
+    langCourseDao.retrieve( 10 );
+  }
+
   @Test
-  public void removeTest(){
+  public void removeTest()
+    throws Exception
+  {
     langCourseDao.remove( 2 );
     assertEquals( 1, langCourseDao.retrieveAll( ).size() );
+  }
+
+  @Test(expected = NotFoundException.class)
+  public void removeTest_NotFoundElement_ThrowsException()
+    throws NotFoundException
+  {
+    LangCourse langCourse = new LangCourse( );
+    try{
+      langCourseDao.remove( 20 );
+    } finally {
+      assertEquals( 2, langCourseDao.retrieveAll( ).size() );
+    }
+
   }
 
   @Test

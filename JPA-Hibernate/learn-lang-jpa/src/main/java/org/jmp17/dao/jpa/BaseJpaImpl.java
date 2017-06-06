@@ -1,6 +1,7 @@
 package org.jmp17.dao.jpa;
 
 import org.jmp17.dao.api.BaseDao;
+import org.jmp17.dao.api.NotFoundException;
 import org.jmp17.model.BaseModelObj;
 
 import javax.persistence.EntityManager;
@@ -30,14 +31,19 @@ public abstract class BaseJpaImpl<T extends BaseModelObj> implements BaseDao<T>
 
   @Override
   public void remove( Integer id )
+    throws NotFoundException
   {
     T t = retrieve( id );
     entityManager.remove( t );
   }
 
   @Override
-  public T retrieve( Integer id )
+  public T retrieve( Integer id ) throws NotFoundException
   {
+    T element = entityManager.find( tClass, id );
+    if( element == null ){
+      throw new NotFoundException();
+    }
     return entityManager.find( tClass, id );
   }
 

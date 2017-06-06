@@ -8,7 +8,7 @@ import java.util.List;
 public interface BaseDao<E> {
     Integer add(E e);
     List<E> retrieveAll();
-    void remove(Integer id);
-    E retrieve(Integer id);
+    void remove(Integer id) throws NotFoundException;
+    E retrieve(Integer id) throws NotFoundException;
     void update(E e);
 }

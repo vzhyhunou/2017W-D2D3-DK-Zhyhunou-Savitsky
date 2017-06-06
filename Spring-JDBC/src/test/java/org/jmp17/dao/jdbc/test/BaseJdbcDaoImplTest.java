@@ -1,6 +1,7 @@
 package org.jmp17.dao.jdbc.test;
 
 import org.jmp17.dao.api.LangCourseDao;
+import org.jmp17.dao.api.NotFoundException;
 import org.jmp17.model.LangCourse;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,20 +37,26 @@ public class BaseJdbcDaoImplTest {
     }
 
     @Test
-    public void removeByIdTest(){
+    public void removeByIdTest()
+      throws Exception
+    {
         langCourseDao.remove(1);
         assertEquals( langCourseDao.retrieveAll().size(), 1 );
     }
 
     @Test
-    public void updateTest(){
+    public void updateTest()
+      throws Exception
+    {
         langCourseDao.update( UPDATED_LANGCOURSE );
         LangCourse updated = langCourseDao.retrieve( UPDATED_LANGCOURSE.getId() );
         assertEquals( UPDATED_LANGCOURSE.getName(), updated.getName() );
     }
 
     @Test
-    public void addTest(){
+    public void addTest()
+      throws Exception
+    {
         langCourseDao.add( ADDED_LANGCOURSE );
         LangCourse newlyAdded = langCourseDao.retrieve(3);
         assertEquals( ADDED_LANGCOURSE.getName(), newlyAdded.getName() );
