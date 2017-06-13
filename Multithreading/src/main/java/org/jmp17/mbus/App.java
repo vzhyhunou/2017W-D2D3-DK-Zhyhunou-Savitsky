@@ -9,7 +9,7 @@ public class App
   {
     Queue<String> queue = new LinkedList<>( );
 
-    Thread consumer1 = new Thread( () -> {
+    /*Thread consumer1 = new Thread( () -> {
       try {
         Thread.sleep( 1500 );
       } catch( InterruptedException e ) {
@@ -36,28 +36,7 @@ public class App
 
 
     Thread consumer2 = new Thread( () -> {
-      try {
-        Thread.sleep( 1500 );
-      } catch( InterruptedException e ) {
-        e.printStackTrace();
-      }
 
-      long timer = System.currentTimeMillis();
-      while(true){
-        String el = queue.poll();
-        if(el == null){
-          System.out.println("consumer2: queue is empty");
-          try {
-            synchronized( queue ) {
-              queue.wait(10000);
-            }
-          } catch( InterruptedException e ) {
-            e.printStackTrace();
-          }
-        } else {
-          System.out.println("consumer2: polled element: " + el);
-        }
-      }
     } );
 
 
@@ -80,10 +59,17 @@ public class App
           System.out.println( "+ new elem" );
         }
       }
-    });
+    });*/
+
+    Thread producer1 = new Thread( new Producer( queue, "producer1" ) );
+    Thread producer2 = new Thread( new Producer( queue, "producer2" ) );
+    Thread consumer1 = new Thread( new Consumer( queue, "consumer1" ) );
+    Thread consumer2 = new Thread( new Consumer( queue, "consumer2" ) );
 
 
-    producer.start();
+
+    producer1.start();
+    producer2.start();
     consumer1.setDaemon( true );
     consumer1.start();
 
