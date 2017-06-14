@@ -18,21 +18,28 @@ public class Consumer implements Runnable
   {
     while(true){
       synchronized( queue ) {
-        String el = queue.poll();
-        if ( el == null ) {
+        while( queue.isEmpty() ){
           System.out.println( Thread.currentThread().getName() + " - " + name + ": queue is empty" );
           try {
-            System.out.println( Thread.currentThread().getName() + " - waiting");
+            System.out.println( Thread.currentThread().getName() + " - " + name + " - waiting");
             queue.wait( 10000 );
-            System.out.println( Thread.currentThread().getName() + " - stopped waiting");
+            System.out.println( Thread.currentThread().getName() + " - " + name + " - stopped waiting");
           } catch( InterruptedException e ) {
-            System.out.println( Thread.currentThread().getName() + " - interrupted");
+            System.out.println( Thread.currentThread().getName() + " - " + name + " - interrupted");
             e.printStackTrace();
           }
-        } else {
-          System.out.println( Thread.currentThread().getName() + " - " + name + ": polled element: " + el );
         }
+        String el = queue.poll();
+        System.out.println( Thread.currentThread().getName() + " - " + name + ": polled element: " + el );
       }
+      System.out.println( Thread.currentThread().getName() + " - " + name +  ": left synchronized" );
+      someTimeConsumingLogic();
     }
+  }
+
+  public void someTimeConsumingLogic(){
+    int c = 0;
+    for(int i=0; i<100000; i++)
+      c++;
   }
 }

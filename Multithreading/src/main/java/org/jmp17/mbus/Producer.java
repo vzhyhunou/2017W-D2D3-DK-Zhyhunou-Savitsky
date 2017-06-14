@@ -22,11 +22,13 @@ public class Producer implements Runnable
       } catch( InterruptedException e ) {
         e.printStackTrace();
       }
-      synchronized( queue ) {
-        queue.add( "new element" + i );
-        queue.notify();
-      }
 
+      synchronized( queue ) {
+        int numberOfElemToInject = Math.toIntExact( Math.round( Math.random() * 100 ) );
+        for (int j = 0; j < numberOfElemToInject; j++)
+          queue.add( "new element" + j );
+        queue.notifyAll();
+      }
       System.out.println( name + ": + new elem" );
     }
   }
